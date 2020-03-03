@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netflix.discovery.shared.Applications;
+
 import in.thirumal.service.EurekaClientService;
 
 /**
@@ -23,7 +25,7 @@ public class EurekaClientController {
 	private EurekaClientService eurekaClientService;
 
 	@GetMapping(value = "/{applicationName}")
-	public boolean getApplicationInstance(@PathVariable(value = "applicationName") String applicationName) {
+	public Applications getApplicationInstance(@PathVariable(value = "applicationName") String applicationName) {
 		return eurekaClientService.getAllInstances(applicationName);
 	}
 	
