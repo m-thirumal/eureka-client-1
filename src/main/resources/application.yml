@@ -10,7 +10,6 @@ spring:
   freemarker: 
     check-template-location: false
 
-name: eureka-client-1
 server:
   port: 8081
   # ssl:
@@ -53,7 +52,7 @@ freemarker:
 --- 
 eureka:
   instance:
-    instanceId: ${spring.cloud.client.hostname}:${name}:${random.int[1,999999]}
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${random.int[1,999999]}
     appname: eureka-client-1
     leaseRenewalIntervalInSeconds: 10
     preferIpAddress: true
