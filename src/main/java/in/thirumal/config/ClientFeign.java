@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Thirumal
  *
  */
-@FeignClient(name = "eureka-client-2", configuration = ClientFeignConfig.class)
-@RibbonClient(name = "eureka-client-2", configuration = ClientFeignConfig.class)
+@FeignClient(name = "eureka-client-two", configuration = ClientFeignConfig.class)
+@RibbonClient(name = "eureka-client-two", configuration = ClientFeignConfig.class)
 //@LoadBalancerClient(name = "eureka-client-2", configuration = EurekaClient2Configuration.class)
 public interface ClientFeign {
 

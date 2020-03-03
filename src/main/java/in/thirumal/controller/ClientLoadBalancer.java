@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import in.thirumal.config.ClientFeign;
-import reactor.core.publisher.Mono;
+import in.thirumal.service.EurekaClientService;
 
 /**
  * @author Thirumal
@@ -23,17 +21,18 @@ import reactor.core.publisher.Mono;
 public class ClientLoadBalancer {
 	
 	@Autowired
-	private ClientFeign clientFeign;
-	private final WebClient.Builder loadBalancedWebClientBuilder;
-	//private final ReactorLoadBalancerExchangeFilterFunction lbFunction;
+	EurekaClientService eurekaClientService;
+	
+//	private final WebClient.Builder loadBalancedWebClientBuilder;
+/*	private final ReactorLoadBalancerExchangeFilterFunction lbFunction;
 
-	public ClientLoadBalancer(WebClient.Builder loadBalancedWebClientBuilder) {//,
-		//	ReactorLoadBalancerExchangeFilterFunction lbFunction) {
+	public ClientLoadBalancer(WebClient.Builder loadBalancedWebClientBuilder,
+			ReactorLoadBalancerExchangeFilterFunction lbFunction) {
 		super();
-		this.loadBalancedWebClientBuilder = loadBalancedWebClientBuilder;
-		//this.lbFunction = lbFunction;
+	//	this.loadBalancedWebClientBuilder = loadBalancedWebClientBuilder;
+		this.lbFunction = lbFunction;
 	}
-
+*/
 //	@GetMapping("")
 //	public Mono<IntSummaryStatistics> getStatisticFromClient2() {
 //		return WebClient.builder()
@@ -42,11 +41,17 @@ public class ClientLoadBalancer {
 //        .retrieve().bodyToMono(IntSummaryStatistics.class);
 //	}
 	
-	@GetMapping("")
-	public IntSummaryStatistics getStatisticFromClient2() {
+	@GetMapping("/feign")
+	public IntSummaryStatistics getStatisticFromClient2UsingFeign() {
 		System.out.println("hi");
 		//return loadBalancedWebClientBuilder.build().get().uri("http://eureka-client-2/client2")
 		//		.retrieve().bodyToMono(IntSummaryStatistics.class);
-		return clientFeign.getSummaryStatistics();
+		return eurekaClientService.getStatisticFromClient2UsingFeign();
 	}
+	
+	/*@GetMapping("")
+	public IntSummaryStatistics getStatisticFromClient2UsingFeign() {
+		return loadBalancedWebClientBuilder.build().get().uri("http://eureka-client-2/client2")
+				.retrieve().bodyToMono(IntSummaryStatistics.class);
+	}*/
 }

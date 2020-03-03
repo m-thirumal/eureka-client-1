@@ -3,6 +3,7 @@
  */
 package in.thirumal.service;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Applications;
+
+import in.thirumal.config.ClientFeign;
 
 /**
  * @author Thirumal
@@ -24,6 +27,8 @@ public class EurekaClientService {
 	private DiscoveryClient discoveryClient;
 	@Autowired
 	private EurekaClient eurekaClient;	
+	@Autowired
+	private ClientFeign clientFeign;
 	
 	public Applications getAllInstances(String applicationName) {
 		List<String> apps = discoveryClient.getServices();  
@@ -43,5 +48,9 @@ public class EurekaClientService {
         return applications;
 	}
 
+	public IntSummaryStatistics getStatisticFromClient2UsingFeign() {
+		System.out.println("hi");
+		return clientFeign.getSummaryStatistics();
+	}
 	
 }
