@@ -48,6 +48,10 @@ public class EurekaClientService {
         return applications;
 	}
 
+	/**
+	 * To get result by ribbion and Feign
+	 * @return
+	 */
 	public IntSummaryStatistics getStatisticFromClient2UsingFeign() {
 		System.out.println("hi");
 		return clientFeign.getSummaryStatistics();
