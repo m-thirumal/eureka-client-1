@@ -40,9 +40,10 @@ public class ClientLoadBalancer {
 	/**
 	 * Using open feign
 	 * @return
+	 * @throws Exception 
 	 */
 	@GetMapping("/open-feign")
-	public IntSummaryStatistics getStatisticFromClient2UsingFeign() {
+	public IntSummaryStatistics getStatisticFromClient2UsingFeign() throws Exception {
 	return eurekaClientService.getStatisticFromClient2UsingFeign();
 	}
 	
