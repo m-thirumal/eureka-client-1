@@ -11,3 +11,6 @@ Eureka client load balancing with feign, ribbon and spring cloud load balancer
 
 # To Create jar
 mvn clean package -DskipTests=true
+
+# Run as a jar from terminal
+java -jar target/eureka-client-1-0.0.1-SNAPSHOT.jar
