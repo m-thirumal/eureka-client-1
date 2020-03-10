@@ -53,7 +53,7 @@ public class ClientLoadBalancer {
 	 */
 	@GetMapping("/cloud-load-balancer-web-client")
 	public Mono<IntSummaryStatistics> getStatisticFromClient2UsingWebClient() {
-		return loadBalancedWebClientBuilder.build().get().uri("http://eureka-client-2/client2")
+		return loadBalancedWebClientBuilder.build().get().uri("http://eureka-client-2/2/client2")
 				.retrieve().bodyToMono(IntSummaryStatistics.class);
 	}
 	
