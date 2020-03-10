@@ -14,3 +14,7 @@ mvn clean package -DskipTests=true
 
 # Run as a jar from terminal
 java -jar target/eureka-client-1-0.0.1-SNAPSHOT.jar
+
+# Swagger 2 is accessible from 
+
+> [http://localhost:8081/1/swagger-ui.html](http://localhost:8081/1/swagger-ui.html)
