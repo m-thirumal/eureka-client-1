@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //@LoadBalancerClient(name = "eureka-client-2", configuration = EurekaClient2Configuration.class)
 public interface ClientFeign {
 
-	@GetMapping("/client2")
+	@GetMapping("/2/client2")
 	public IntSummaryStatistics getSummaryStatistics();
 	
 }
