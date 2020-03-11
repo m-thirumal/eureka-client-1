@@ -11,7 +11,7 @@ spring:
     check-template-location: false
 
 server:
-  port: 8081
+  port: ${PORT:0}
   # ssl:
    # key-store: classpath:demo_indsolv.keystore
    # key-store-password: thirumal
